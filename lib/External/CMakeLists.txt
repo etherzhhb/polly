@@ -349,3 +349,9 @@ if (NOT MSVC)
     COMPILE_FLAGS "-w"
   )
 endif ()
+
+if(MSVC)
+  # In the Windows API (with some exceptions), the maximum length for a path is
+  # MAX_PATH, which is defined as 260 characters. 
+  target_compile_definitions(PollyPPCG PUBLIC "-DPATH_MAX=260")
+endif ()
